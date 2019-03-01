@@ -56,14 +56,23 @@ function onClick(event) {
     }
 }
 
-function init() {
-
-    cards = createCards(CARD_PAIR);
+function restart(){
+    movesCount = -1;
+    openCards = [];
+    closeCard(cards);
     shuffleCards(cards)
     createDeck(cards);
+    updateMoves();
+}
+
+function init() {
 
     moves = document.getElementById('moves');
 
+    cards = createCards(CARD_PAIR);
+    restart();    
+
     document.getElementById('deck').addEventListener('click', onClick);
+    document.getElementById('restartButton').addEventListener('click', restart);
 
 }

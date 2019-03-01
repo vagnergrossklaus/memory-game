@@ -66,3 +66,18 @@ html {
 .card.unmatch {    
     background: #cd0e3e;    
 }
+
+/*
+ * Styles for the Score Panel
+ */
+
+ .score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
