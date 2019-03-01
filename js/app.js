@@ -4,7 +4,11 @@ var lastCard = undefined;
 var cards = [];
 var openCards = [];
 
-
+function congratulation(){
+    finalScore();
+    document.getElementById('game').setAttribute('class', 'container hidden');
+    document.getElementById('congratulation').setAttribute('class', 'container show');
+}
 
 function close(cards) {
     closeCard(cards);
@@ -29,8 +33,14 @@ function match(currentCard) {
         document.getElementById('deck').removeEventListener('click', onClick);
 
         if (isCardsMatch(lastCard, currentCard)) {
+            
             matchCard([lastCard, currentCard]);
             document.getElementById('deck').addEventListener('click', onClick);
+
+            if (openCards.length == cards.length){
+                congratulation();
+            }
+
         } else {
 
             unmatchCard([lastCard, currentCard]);
@@ -58,6 +68,8 @@ function restart(){
     shuffleCards(cards)
     createDeck(cards);
     restartScore(CARD_PAIR);
+    document.getElementById('game').setAttribute('class', 'container show');
+    document.getElementById('congratulation').setAttribute('class', 'container hidden');
 }
 
 function init() {
@@ -67,5 +79,6 @@ function init() {
 
     document.getElementById('deck').addEventListener('click', onClick);
     document.getElementById('restartButton').addEventListener('click', restart);
+    document.getElementById('playAgainButton').addEventListener('click', restart);
 
 }

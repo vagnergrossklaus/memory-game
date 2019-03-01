@@ -6,6 +6,25 @@ var starScorePoints = [];
 var moveScore;
 var movesCount = 0;
 
+function finalScore(){
+    
+    var count = starScorePoints.length - 1;
+    var starCount = 0
+
+    while(count >= 0 && starCount === 0){
+        if (movesCount < starScorePoints[count]){
+            starCount = count + 1;
+        }
+        count--;
+    }
+
+    var message = 'With ' + movesCount + ' moviments';
+    message += ' and ' + (starCount > 0 ? starCount : 'no') + ' stars.';
+    message += '<br>Wooo' + 'o'.repeat(starCount) + '!' + '!'.repeat(starCount);
+    document.getElementById('finalScore').innerHTML = message;
+
+}
+
 function updateStarts() {
 
     var stars = starScore.querySelectorAll('li');
@@ -34,10 +53,11 @@ function updateScore() {
 
 function restartScore(pairs) {
 
+    starScorePoints = [];
+
     starScore = document.getElementById('stars');
     for (var i = 1; i <= starScore.querySelectorAll('li').length; i++) {
         starScorePoints.unshift((pairs * (i + 1)) + 1);
-        // starScorePoints.unshift(i+1);
     }
 
     moveScore = document.getElementById('moves');
