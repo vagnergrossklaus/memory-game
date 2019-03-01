@@ -1,14 +1,10 @@
 const CARD_PAIR = 8;
 
-var moves;
-var movesCount = 0;
 var lastCard = undefined;
 var cards = [];
 var openCards = [];
 
-function updateMoves() {
-    moves.textContent = ++movesCount;
-}
+
 
 function close(cards) {
     closeCard(cards);
@@ -28,7 +24,7 @@ function match(currentCard) {
         showCard(currentCard);
     } else {
 
-        updateMoves();
+        updateScore();
 
         document.getElementById('deck').removeEventListener('click', onClick);
 
@@ -57,17 +53,14 @@ function onClick(event) {
 }
 
 function restart(){
-    movesCount = -1;
     openCards = [];
     closeCard(cards);
     shuffleCards(cards)
     createDeck(cards);
-    updateMoves();
+    restartScore(CARD_PAIR);
 }
 
 function init() {
-
-    moves = document.getElementById('moves');
 
     cards = createCards(CARD_PAIR);
     restart();    
