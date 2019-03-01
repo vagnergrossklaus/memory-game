@@ -1,4 +1,4 @@
-const IMAGES = ['car-side', 'bicycle', 'plane', 'rocket', 'truck', 'helicopter', 'tractor', 'sleigh'];
+const IMAGES = ['fas fa-gem', 'fas fa-paper-plane', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle'];
 
 function closeCard(cards){
     cards.forEach(function(card) {
@@ -29,7 +29,7 @@ function isCardsMatch(card1, card2){
 function createCard(image) {
 
     var i = document.createElement("i");
-    i.setAttribute('class', 'fa fa-' + image);
+    i.className = image;
 
     var card = document.createElement('li');
     card.appendChild(i);
