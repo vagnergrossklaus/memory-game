@@ -1,8 +1,14 @@
 const CARD_PAIR = 8;
 
+var moves;
+var movesCount = 0;
 var lastCard = undefined;
 var cards = [];
 var openCards = [];
+
+function updateMoves() {
+    moves.textContent = ++movesCount;
+}
 
 function close(cards) {
     closeCard(cards);
@@ -22,6 +28,8 @@ function match(currentCard) {
         showCard(currentCard);
     } else {
 
+        updateMoves();
+
         document.getElementById('deck').removeEventListener('click', onClick);
 
         if (isCardsMatch(lastCard, currentCard)) {
@@ -32,7 +40,7 @@ function match(currentCard) {
             unmatchCard([lastCard, currentCard]);
             openCards.splice(openCards.indexOf(lastCard), 2);
 
-            setTimeout(close, 1000, [lastCard, currentCard]);            
+            setTimeout(close, 1000, [lastCard, currentCard]);
 
         }
 
@@ -53,6 +61,8 @@ function init() {
     cards = createCards(CARD_PAIR);
     shuffleCards(cards)
     createDeck(cards);
+
+    moves = document.getElementById('moves');
 
     document.getElementById('deck').addEventListener('click', onClick);
 
