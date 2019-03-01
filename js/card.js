@@ -1,12 +1,37 @@
 const IMAGES = ['car-side', 'bicycle', 'plane', 'rocket', 'truck', 'helicopter', 'tractor', 'sleigh'];
 
+function closeCard(cards){
+    cards.forEach(function(card) {
+        card.setAttribute('class', 'card close');    
+    });    
+}
+
+function showCard(card){
+    card.setAttribute('class', 'card open show');
+}
+
+function matchCard(cards){
+    cards.forEach(function(card) {
+        card.setAttribute('class', 'card open match');
+    });        
+}
+
+function unmatchCard(cards){
+    cards.forEach(function(card) {
+        card.setAttribute('class', 'card open unmatch');
+    });    
+}
+
+function isCardsMatch(card1, card2){
+    return card1.querySelector('i').getAttribute('class') == card2.querySelector('i').getAttribute('class');
+}
+
 function createCard(image) {
 
     var i = document.createElement("i");
     i.setAttribute('class', 'fa fa-' + image);
 
     var card = document.createElement('li');
-    card.setAttribute('class', 'card');;
     card.appendChild(i);
 
     return card;
@@ -22,6 +47,8 @@ function createCards(pairs) {
             cards.push(createCard(IMAGES[i]));
         }
     }
+
+    closeCard(cards);
 
     return cards;
 

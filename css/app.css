@@ -35,7 +35,6 @@ html {
 .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -45,6 +44,12 @@ html {
     align-items: center;
 }
 
+.card.close {
+    font-size: 0;
+    background: #2e3d49;
+    cursor: pointer;
+}
+
 .card.open {
     font-size: 33px;
     cursor: default;
@@ -52,4 +57,12 @@ html {
 
 .card.show {    
     background: #02b3e4;    
+}
+
+.card.match {    
+    background: #02ccba;    
+}
+
+.card.unmatch {    
+    background: #cd0e3e;    
 }
